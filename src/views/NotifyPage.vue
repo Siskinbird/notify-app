@@ -46,15 +46,29 @@ export default {
   },
   computed: {
     messages() {
-      return this.$store.getters.getMessages
+      return this.$store.getters.getMessagesMain
     }
   },
   methods: {
     getNotify() {
-      // this.isLoaded = true
+       this.isLoaded = true
       axios.get('https://dmich.ru/api/notifyApi.php')
           .then(response => {
-            this.$store.dispatch('setMessages', response.data.notify)
+            let res = response.data.notify,
+                messages = [],
+                messagesMain = [];
+
+            //filter
+            for (let i = 0; i < res.length; i++) {
+              if (res[i].main) {
+                messagesMain.push(res[i])
+              } else {
+                messages.push(res[i])
+              }
+            }
+
+            this.$store.dispatch('setMessages', messages)
+            this.$store.dispatch('setMessagesMain', messagesMain)
           })
           .catch(error => {
             console.log(error);
@@ -81,28 +95,15 @@ export default {
 .notify__content {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  min-height: 300px;
+  min-height: 270px;
 }
 .notify-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   p {
     font-size: 24px;
   }
 }
-
-//.wrapper-content {
-//  display: flex;
-//  align-items: center;
-//  flex-direction: column;
-//  min-height: 300px;
-//}
-
-
-
-
-
-
 </style>
