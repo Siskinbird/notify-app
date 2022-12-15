@@ -17,11 +17,11 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 16
+      default: 32
     },
     height: {
       type: Number,
-      default: 16
+      default: 32
     }
   }
 }
@@ -48,8 +48,8 @@ export default {
   width: 5%;
   height: 5%;
   background: #444ce0;
-  left:0px;
-  top:0px;
+  left:0;
+  top:0;
   border-radius: 3px;
 }
 
