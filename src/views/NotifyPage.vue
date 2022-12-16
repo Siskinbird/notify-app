@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     messages() {
-      return this.$store.getters.getMessagesMain
+      return this.$store.getters.getMessageMain
     }
   },
   methods: {
@@ -67,8 +67,8 @@ export default {
               }
             }
 
-            this.$store.dispatch('setMessages', messages)
-            this.$store.dispatch('setMessagesMain', messagesMain)
+            this.$store.dispatch('setMessage', messages)
+            this.$store.dispatch('setMessageMain', messagesMain)
           })
           .catch(error => {
             console.log(error);

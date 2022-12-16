@@ -1,11 +1,15 @@
 <template>
+  <div>
   <table>
     <transition-group name="list" tag="tbody">
       <tr v-for="message in messages" :key="message.title">
         <td><span>{{message.title}}</span></td>
       </tr>
     </transition-group>
+    <button @click="loadMore" class="btn btnPrimary">Load more</button>
   </table>
+
+  </div>
 </template>
 
 <script>
@@ -14,6 +18,14 @@ export default {
     messages: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    loadMore () {
+      this.$store.dispatch("loadMessages")
+          .catch(err => {
+            console.log(err);
+          })
     }
   }
 }
@@ -30,6 +42,10 @@ table {
     font-size: 14px;
   }
 }
+button {
+  margin-top: 20px;
+}
+
 /* Animation */
 .list-item {
   display: inline-block;
