@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Notify from '@/views/Notify'
+import Notify from '@/views/NotifyPage'
 import NotFound from '@/views/404'
 import Home from "@/views/Home";
 

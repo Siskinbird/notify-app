@@ -24,7 +24,7 @@ export default {
     return {
       links: [
         {title: 'Home', url: '/'},
-        {title: 'Shop', url: '/shop'}
+        {title: 'Notify', url: '/notify'}
       ]
     }
 
